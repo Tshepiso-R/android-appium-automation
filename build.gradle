@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'com.sdet.mobile'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.appium:java-client:9.0.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    testImplementation 'org.testng:testng:7.8.0'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+test {
+    useTestNG()
+    
+    environment "ANDROID_HOME", "C:\\Users\\User\\AppData\\Local\\Android\\Sdk"
+    environment "ANDROID_SDK_ROOT", "C:\\Users\\User\\AppData\\Local\\Android\\Sdk"
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
