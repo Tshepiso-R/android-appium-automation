@@ -15,11 +15,21 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(accessibility = "Login button")
     private WebElement loginButton;
     
-    @AndroidFindBy(xpath = "//*[contains(@text, 'Username is required')]")
-    private WebElement usernameError;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='bob@example.com']")
+    private WebElement bobUsername;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='10203040']")
+    private WebElement bobPassword;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Login']")
+    private WebElement loginTitle;
     
     public LoginPage(AppiumDriver driver) {
         super(driver);
+    }
+    
+    public boolean isLoginPageDisplayed() {
+        return isDisplayed(loginTitle);
     }
     
     public void enterUsername(String username) {
@@ -34,14 +44,25 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
     
+    public void clickBobUsername() {
+        click(bobUsername);
+    }
+    
+    public void clickBobPassword() {
+        click(bobPassword);
+    }
+    
+    public ProductsPage loginWithBob() {
+        clickBobUsername();
+        clickBobPassword();
+        clickLogin();
+        return new ProductsPage(driver);
+    }
+    
     public ProductsPage login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
         clickLogin();
         return new ProductsPage(driver);
-    }
-    
-    public boolean isUsernameErrorDisplayed() {
-        return isDisplayed(usernameError);
     }
 }
