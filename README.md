@@ -10,39 +10,41 @@ Automated testing framework for Android mobile applications using Appium, Java, 
 - Gradle
 - Page Object Model
 
+## Test Coverage
+
+**9 Tests - 100% Pass Rate**
+
+- App launch and navigation
+- Product browsing and details
+- Shopping cart (add, view, remove)
+- User login
+- Complete checkout flow (shipping, payment, order placement)
+
 ## Prerequisites
 
-- Java 11 or higher
+- Java 11+
 - Node.js
-- Android Studio (with Android SDK)
+- Android Studio with SDK
 - Appium Server
 
 ## Installation
 
-### 1. Install Dependencies
-
-**Android Studio:**  
-Download from https://developer.android.com/studio
-
-**Node.js & Appium:**
+**Install Appium:**
 ```bash
 npm install -g appium
 appium driver install uiautomator2
 ```
 
-### 2. Set Environment Variable
-
-**Windows:**
-```powershell
-$env:ANDROID_HOME = "C:\Users\YOUR_USERNAME\AppData\Local\Android\Sdk"
-```
-
-**Mac/Linux:**
+**Set Environment Variable:**
 ```bash
+# Windows
+$env:ANDROID_HOME = "C:\Users\YOUR_USERNAME\AppData\Local\Android\Sdk"
+
+# Mac/Linux
 export ANDROID_HOME=$HOME/Library/Android/sdk
 ```
 
-### 3. Clone Repository
+**Clone Repository:**
 ```bash
 git clone https://github.com/Tshepiso-R/android-appium-automation.git
 cd android-appium-automation
@@ -50,40 +52,38 @@ cd android-appium-automation
 
 ## Running Tests
 
-### Step 1: Start Emulator
-Open Android Studio ? Device Manager ? Launch emulator
+**1. Start Emulator**  
+Launch Android emulator from Android Studio
 
-### Step 2: Install Test App
+**2. Install App**
 ```bash
 adb install app/Android-MyDemoAppRN.1.3.0.apk
 ```
 
-### Step 3: Start Appium
+**3. Start Appium**
 ```bash
 appium
 ```
 
-### Step 4: Run Tests
-
-**Windows:**
+**4. Run Tests**
 ```bash
-.\gradlew.bat test
-```
+# Windows
+.\gradlew.bat clean test
 
-**Mac/Linux:**
-```bash
-./gradlew test
+# Mac/Linux
+./gradlew clean test
 ```
 
 ## Test Results
 
-View report at: `build/reports/tests/test/index.html`
+View report: `build/reports/tests/test/index.html`
 
-## Test Coverage
+## Test Data
 
-- testAppLaunch - Verify app launches successfully
-- testProductsPageTitle - Validate Products page title
-- testClickProduct - Test product interaction
+Edit `src/test/resources/testdata.properties` for:
+- Login credentials
+- Shipping address
+- Payment information
 
 ## Author
 
